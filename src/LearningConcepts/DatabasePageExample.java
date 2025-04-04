@@ -34,7 +34,7 @@ public class DatabasePageExample {
             page.putInt(12);         // Free space pointer starts after header
             page.putInt(0);          // Initially 0 records
 
-            // 2. Encode record
+            // 2. Encode record : This function is actually creating a tuple with all the metadata will be required.
             ByteBuffer recordBuffer = encodeRecord(name, address, age, gender);
             int recordSize = recordBuffer.limit();
 
@@ -80,7 +80,7 @@ public class DatabasePageExample {
         ByteBuffer buffer = ByteBuffer.allocate(totalLength);
         for(int i=0;i<nameBytes.length;i++){
             System.out.print(nameBytes[i]+" ");
-        }
+        } // printing what byte array actually holds
         System.out.println();
         // Record header
         buffer.putShort((short)totalLength);
